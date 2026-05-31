@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瞿立 - 个人主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* 星空画布全屏固定 */
+        #starCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0a0e1a;
+            z-index: -1;
+        }
+
+        body {
+            color: #e6edf7;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        /* 主容器 毛玻璃卡片 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(25, 35, 60, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 3rem 2.8rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 头部区域 */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .contact {
+            font-size: 1.05rem;
+            color: #b8c8e6;
+        }
+
+        .contact a {
+            color: #74b9ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* 通用板块样式 */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 1.2rem;
+            padding-left: 12px;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .content {
+            font-size: 1rem;
+            color: #d0dcec;
+        }
+
+        .item {
+            margin-bottom: 1.4rem;
+        }
+
+        .item-title {
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+
+        .item-desc {
+            padding-left: 0.8rem;
+            color: #b8c8e6;
+        }
+
+        ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+        }
+
+        em {
+            color: #94c7ff;
+            font-style: normal;
+        }
+
+        /* 技能标签 */
+        .skills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.6rem;
+        }
+
+        .skill-tag {
+            background: rgba(116, 185, 255, 0.15);
+            border: 1px solid rgba(116, 185, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            color: #e6edf7;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(116, 185, 255, 0.25);
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+            color: #8898b3;
+        }
+
+        .social-links {
+            margin: 1.2rem 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 1rem;
+            color: #74b9ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+        }
+
+        /* 响应式 移动端适配 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1.2rem;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态星空背景画布 -->
+    <canvas id="starCanvas"></canvas>
+
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>瞿立</h1>
+            <div class="contact">
+                联系方式：<a href="mailto:18721375731@163.com">18721375731@163.com</a>
+            </div>
+        </div>
+
+        <!-- 研究方向 -->
+        <div class="section">
+            <h2 class="section-title">研究方向</h2>
+            <div class="content">
+                <p>合成生物学——全细胞生物传感器设计与开发、细菌基因组编辑与底盘构建</p>
+                <p style="margin-top: 0.6rem;">生物工程——噬菌体展示技术用于靶向蛋白筛选</p>
+            </div>
+        </div>
+
+        <!-- 个人经历 -->
+        <div class="section">
+            <h2 class="section-title">个人经历</h2>
+            <div class="content">
+                <div class="item">
+                    <div class="item-title">博士后 | 中科院杭州医学所（2025-至今）</div>
+                    <div class="item-desc">研究课题：用于药物递送的智能工程菌开发；AI赋能的酵母展示平台用于纳米抗体开发</div>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">博士 | 华东理工大学 生物化工（2017-2025）</div>
+                    <div class="item-desc">
+                        参与项目：
+                        <ul>
+                            <li>高效超声/光声生物成像元件库的挖掘与应用研究（国家重点研发计划项目）</li>
+                            <li>疾病标志物感应的智能生物传感器与在体原位诊疗研究（国家自然科学基金项目）</li>
+                            <li>新型冠状病毒与天然免疫互作的分子机制及药物靶点研究（高校基本科研业务费项目）</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">学士 | 华东理工大学 生物技术（2013-2017） 辅修：工程管理</div>
+                    <div class="item-desc">获奖：上海大学生数学竞赛二等奖；上海大学生物理竞赛三等奖</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 论文发表 -->
+        <div class="section">
+            <h2 class="section-title">论文发表</h2>
+            <div class="content">
+                <ul>
+                    <li>1. Development of Ultrasound-Visualized Tumor-Targeting Engineered Bacteria for Precise Tumor Therapy. <em>Synth Syst Biotechnol</em>（一作）</li>
+                    <li>2. Heat-induced bistable switch based on quorum sensing for in vivo engineered bacteria therapy of solid tumors. 在投（一作）</li>
+                    <li>3. Development and application of an interbacterial DNA delivery system based on M13 bacteriophage. <em>Arch Microbiol</em>（一作）</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 实验技能 -->
+        <div class="section">
+            <h2 class="section-title">实验技能</h2>
+            <div class="skills-wrap">
+                <span class="skill-tag">分子克隆</span>
+                <span class="skill-tag">微生物操作</span>
+                <span class="skill-tag">基因组改造</span>
+                <span class="skill-tag">蛋白纯化及表征</span>
+                <span class="skill-tag">噬菌体展示</span>
+                <span class="skill-tag">病毒表达纯化</span>
+                <span class="skill-tag">细胞相关实验</span>
+                <span class="skill-tag">小鼠肿瘤造模及药效评价</span>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="social-links">
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">LinkedIn</a>
+            </div>
+            <p>© 2025 瞿立 All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- 动态星空 JS 代码 -->
+    <script>
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        const starCount = 280; // 星星数量
+
+        // 适配窗口大小
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // 生成星星
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.radius = Math.random() * 1.2 + 0.2;
+                this.speed = Math.random() * 0.4 + 0.1;
+                this.alpha = Math.random();
+                this.direction = Math.random() > 0.5 ? 1 : -1;
+            }
+            update() {
+                this.alpha += 0.01 * this.direction;
+                if (this.alpha > 1 || this.alpha < 0) this.direction *= -1;
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.y = 0;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        // 初始化星星数组
+        for (let i = 0; i < starCount; i++) {
+            stars.push(new Star());
+        }
+
+        // 动画循环
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
+
